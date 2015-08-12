@@ -21,7 +21,6 @@ import java.io.FileOutputStream;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
-    private ViewGroup mLinearLayout;
     Activity mActivity;
 
     public MainActivityFragment() {

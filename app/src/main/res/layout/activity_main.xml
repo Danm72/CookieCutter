@@ -1,8 +1,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:id="@+id/activity_main123"
     android:orientation="vertical"
-    android:background="@drawable/cookies">
+    android:background="#FFD54F">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:id="@+id/activity_main123"
+        android:background="@drawable/cookies"></LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="YOUR COOKIES"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal|bottom"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:typeface="sans"
+        android:capitalize="characters"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:id="@+id/activity_main_dock"
+        android:layout_margin="0dp"
+        android:padding="5dp"
+        android:background="#FFE082">
+
+    </LinearLayout>
 
 </LinearLayout>

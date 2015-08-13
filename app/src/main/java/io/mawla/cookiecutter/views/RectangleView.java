@@ -7,19 +7,19 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class OvalView extends View {
+public class RectangleView extends View {
     Paint paint = new Paint();
 
-    public OvalView(Context context) {
+    public RectangleView(Context context) {
         super(context);
 
         paint = new Paint();
         paint.setColor(Color.BLUE);
-        paint.setStrokeWidth(10);
+        paint.setStrokeWidth(15);
         paint.setStyle(Paint.Style.STROKE);
     }
 
-    public OvalView(Context context, AttributeSet attrs) {
+    public RectangleView(Context context, AttributeSet attrs) {
         super(context, attrs);
         paint = new Paint();
         paint.setColor(Color.BLUE);
@@ -27,7 +27,7 @@ public class OvalView extends View {
         paint.setStyle(Paint.Style.STROKE);
     }
 
-    public OvalView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RectangleView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

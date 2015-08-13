@@ -1,22 +1,17 @@
 package io.mawla.cookiecutter.views;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.View;
-
-import io.mawla.cookiecutter.R;
 
 public class StarView extends View {
     Paint paint = new Paint();
 
-    Path path = new Path();
 
     public StarView(Context context) {
         super(context);
@@ -35,29 +30,31 @@ public class StarView extends View {
         paint.setColor(Color.GREEN);
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.STROKE);
-
-        float mid = getWidth() / 2;
-        float min = Math.min(getWidth(), getHeight());
-        float half = min / 2;
-        mid = mid - half;
-
+        paint.setStrokeWidth(15);
         canvas.drawColor(Color.TRANSPARENT);
 
-        paint.setStyle(Paint.Style.FILL);
-
-        applyStarToPath(mid, half);
+        Path path = createStar(5, new Point(canvas.getWidth()/2, canvas.getHeight()/2), 100, 40);
 
         path.close();
-        canvas.drawPath(path, paint);
 
+        canvas.clipPath(path);
+        canvas.drawPath(path, paint);
     }
 
-    private void applyStarToPath(float mid, float half) {
-        path.moveTo(mid + half * 0.5f, half * 0.84f);
-        path.lineTo(mid + half * 1.5f, half * 0.84f);
-        path.lineTo(mid + half * 0.68f, half * 1.45f);
-        path.lineTo(mid + half * 1.0f, half * 0.5f);
-        path.lineTo(mid + half * 1.32f, half * 1.45f);
-        path.lineTo(mid + half * 0.5f, half * 0.84f);
+    public static Path createStar(int arms, Point center, double rOuter, double rInner)
+    {
+        double angle = Math.PI / arms;
+
+        Path path = new Path();
+
+        for (int i = 0; i < 2 * arms; i++)
+        {
+            double r = (i & 1) == 0 ? rOuter : rInner;
+            float x = (float)(center.x + Math.cos(i * angle) * r);
+            float y = (float)(center.y + Math.sin(i * angle) * r);
+            if (i == 0) path.moveTo(x, y);
+            else path.lineTo(x, y);
+        }
+        return path;
     }
 }
